@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
-
-
+import PropTypes from 'prop-types'
 
 class Result extends Component{
-componentWillMount(){
 
+
+
+
+componentWillMount(){
   if(!this.props.location.data) {
     this.props.history.push('/')
   }
@@ -13,19 +15,29 @@ componentWillMount(){
 }
 
 render() {
+
+  const {data} = this.props.location.data
+
   return (
     <div>
-      {this.props.location.data ?
-        this.props.location.data.data.map(j => {
+      {
+        data.map(j => {
           return <div key={j.id}>{j.body}</div>
-        }) :
-        <div />
+        })
       }
 
     </div>
   );
 }
 
+}
+
+Result.propTypes = {
+  data: PropTypes.object.isRequired
+}
+
+Result.defaultProps = {
+  data: {}
 }
 
 

@@ -3,7 +3,6 @@ import {Input} from 'antd'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 
-
 const Search = Input.Search;
 
 const styles = {
