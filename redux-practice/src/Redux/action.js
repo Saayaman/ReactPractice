@@ -4,7 +4,16 @@ export const incrementFunction = (num) => {
   return function (dispatch){
     dispatch({
       type: types.INCREMENT,
-      payload: num + 1
+    })
+  }
+
+}
+
+
+export const decrementFunction = (num) => {
+  return function (dispatch){
+    dispatch({
+      type: types.DECREMENT,
     })
   }
 

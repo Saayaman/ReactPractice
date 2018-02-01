@@ -8,16 +8,10 @@ const initialState = {
 const changeNum = (state = initialState, action) => {
   switch (action.type){
     case types.INCREMENT:
-      return {
-        num: action.pay,
-        status: types.INCREMENT
-      }
+      return state + 1;
     case types.DECREMENT:
-      return {
-        num: action.pay,
-        status: types.DECREMENT
-      }
-      default:
+      return state -1;
+    default:
       return state
 
   }

@@ -1,27 +1,11 @@
 import React, { Component } from 'react';
-import { incrementFunction } from '../Redux/action.js'
-import {connect } from 'react-redux';
+import { incrementFunction, decrementFunction } from '../Redux/action.js'
+import { bindActionCreators } from  'redux';
+import { connect } from 'react-redux';
 import * as types from '../Redux/types.js'
 
 
 class Home extends Component{
-
-  increment = () => {
-    const { dispatch, numObject } = this.props;
-    dispatch({
-      type: types.INCREMENT,
-      pay: numObject.num + 1
-    })
-  }
-
-  decrement = () => {
-    const { dispatch, numObject } = this.props;
-    dispatch({
-      type: types.DECREMENT,
-      pay: numObject.num - 1
-    })
-  }
-
 
   render() {
 
@@ -29,19 +13,27 @@ class Home extends Component{
     return (
       <div>
         <h1>{this.props.numObject.num}</h1>
-        <button onClick={() => this.increment()}>+</button>
-        <button onClick={() => this.decrement()}>-</button>
+        <button onClick={this.props.incrementFunction}>+</button>
+        <button onClick={this.props.decrementFunction}>-</button>
       </div>
     );
   }
 
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state){
   return {
       numObject: state.changeNum,
    }
 }
 
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    incrementFunction: incrementFunction
+  }, dispatch);
+}
 
-export default connect(mapStateToProps)(Home)
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
