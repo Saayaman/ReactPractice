@@ -36,3 +36,7 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.extra_css_1 {}
+
+.extra_css_2 {}
